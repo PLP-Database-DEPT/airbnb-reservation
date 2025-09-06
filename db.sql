@@ -10,3 +10,5 @@ CREATE TABLE booking_guests (
     num_guests INT,
     FOREIGN KEY (booking_id) REFERENCES booking(id),
     FOREIGN KEY (guest_type_id) REFERENCES guest_type(id)
+);
+
