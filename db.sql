@@ -48,7 +48,14 @@ CREATE TABLE place_type (
 CREATE TABLE property_type (
     id INT PRIMARY KEY AUTO_INCREMENT,
     type_name VARCHAR(255)
- )
-
-
-
+ );
+ 
+CREATE TABLE user_account( 
+id INT AUTO_INCREMENT PRIMARY KEY,         
+first_name VARCHAR(50) NOT NULL,         
+last_name VARCHAR(50) NOT NULL,           
+email_address VARCHAR(50) NOT NULL,        
+password VARCHAR(50) NOT NULL,            
+joined_date DATE NOT NULL,              
+date_host_started DATE NOT NULL           
+);
