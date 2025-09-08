@@ -12,3 +12,8 @@ USE airbnb;
 -- `property_id`: Foreign key referencing the `property` table.
 -- `category_id`: Foreign key referencing the `category` table.
 --
+
+CREATE TABLE `property_category` (
+  `property_id` INT NOT NULL,
+  `category_id` INT NOT NULL
+);
