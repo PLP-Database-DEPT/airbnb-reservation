@@ -24,3 +24,9 @@ CREATE TABLE `property_category` (
 ALTER TABLE `property_category`
   ADD CONSTRAINT `fk_property_category_property` FOREIGN KEY (`property_id`) REFERENCES `property` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `fk_property_category_category` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON DELETE CASCADE;
+
+--
+-- Primary key for table `property_category`
+--
+ALTER TABLE `property_category`
+  ADD PRIMARY KEY (`property_id`, `category_id`);
