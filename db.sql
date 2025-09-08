@@ -136,3 +136,11 @@ FOREIGN KEY (property_id) REFERENCES property(id),
 FOREIGN KEY (user_id) REFERENCES user_account(id),
 FOREIGN KEY (booking_status_id) REFERENCES booking_status(id)
 );
+
+CREATE TABLE booking_guests (
+    booking_id INT,
+    guest_type_id INT,
+    num_guests INT,
+    FOREIGN KEY (booking_id) REFERENCES booking(id),
+    FOREIGN KEY (guest_type_id) REFERENCES guest_type(id)
+);
