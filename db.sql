@@ -144,3 +144,8 @@ CREATE TABLE booking_guests (
     FOREIGN KEY (booking_id) REFERENCES booking(id),
     FOREIGN KEY (guest_type_id) REFERENCES guest_type(id)
 );
+
+CREATE TABLE language (
+    id INT PRIMARY KEY,
+    language_name VARCHAR(50)
+);
