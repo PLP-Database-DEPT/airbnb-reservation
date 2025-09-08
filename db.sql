@@ -1,4 +1,3 @@
-
 -- create airbnb database
 CREATE DATABASE airbnb;
 -- work with airbnb database
@@ -27,3 +26,9 @@ id INT PRIMARY KEY AUTO_INCREMENT,
 region_name  VARCHAR(20) NOT NULL     
 );
 
+CREATE TABLE country (
+    id INT PRIMARY KEY,     
+    region_id INT,           
+    country_name VARCHAR(255),     
+    CONSTRAINT fk_region FOREIGN KEY (region_id) REFERENCES region(id)
+);
