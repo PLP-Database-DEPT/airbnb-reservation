@@ -2,7 +2,7 @@
 CREATE DATABASE airbnb;
 -- work with airbnb database
 USE airbnb;
-
+  
 CREATE TABLE category (
     id INT AUTO_INCREMENT PRIMARY KEY, 
     category_name VARCHAR(255) NOT NULL 
@@ -81,3 +81,11 @@ CREATE TABLE property (
     CONSTRAINT fk_property_property_type FOREIGN KEY (property_type_id) REFERENCES property_type(id),
     CONSTRAINT fk_property_host FOREIGN KEY (host_id) REFERENCES host(id)
 );
+
+CREATE TABLE favourite (
+    property_id INT NOT NULL,
+    user_id INT NOT NULL,
+    CONSTRAINT pk_favourite PRIMARY KEY (property_id, user_id),
+    CONSTRAINT fk_favourite_property FOREIGN KEY (property_id) REFERENCES property(property_id),
+    CONSTRAINT fk_favourite_user FOREIGN KEY (user_id) REFERENCES user_account(user_id)
+  );
