@@ -3,13 +3,59 @@ CREATE DATABASE airbnb;
 -- work with airbnb database
 USE airbnb;
 
--- create a table named user_account with 7 columns 
+CREATE TABLE category (
+    id INT AUTO_INCREMENT PRIMARY KEY, 
+    category_name VARCHAR(255) NOT NULL 
+);
+
+CREATE TABLE attribute_category (
+    id INT PRIMARY KEY, 
+    category_name VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE attribute (
+    id INT PRIMARY KEY,
+    category_id INT NOT NULL,
+    attribute_name VARCHAR(255) NOT NULL, 
+    description TEXT,
+    FOREIGN KEY (category_id) REFERENCES attribute_category(id)
+  );
+  
+CREATE TABLE region(
+id INT PRIMARY KEY AUTO_INCREMENT,  
+region_name  VARCHAR(20) NOT NULL     
+);
+
+CREATE TABLE country (
+    id INT PRIMARY KEY,     
+    region_id INT,           
+    country_name VARCHAR(255),     
+    CONSTRAINT fk_region FOREIGN KEY (region_id) REFERENCES region(id)
+);
+
+CREATE TABLE location(
+id INT PRIMARY KEY AUTO_INCREMENT,
+location_name VARCHAR(255) NOT NULL
+country_id INT,
+FOREIGN KEY (country_id) REFERENCES country(country_id)
+);
+
+CREATE TABLE place_type (
+    id INT PRIMARY KEY AUTO_INCREMENT, 
+    type_name VARCHAR(100)              
+);
+
+CREATE TABLE property_type (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    type_name VARCHAR(255)
+ );
+ 
 CREATE TABLE user_account( 
-id INT AUTO_INCREMENT PRIMARY KEY,         -- Column containing the unique id of each user_account row
-first_name VARCHAR(50) NOT NULL,           -- Column containing the first name of the user with a maximum length of 50 characters and cannot be null
-last_name VARCHAR(50) NOT NULL,            -- Column containing the last name of the user with a maximum length of 50 characters and cannot be null
-email_address VARCHAR(50) NOT NULL,        -- Column containing the email address of the user with a maximum length of 50 characters and cannot be null
-password VARCHAR(50) NOT NULL,             -- Column containing the encrypted password for the user’s account with a maximum length of 50 characters and cannot be null
-joined_date DATE NOT NULL,                 -- Column containing the date the user joined the site and cannot be null
-date_host_started DATE NOT NULL            -- Column containing the date the host started and cannot be null
+id INT AUTO_INCREMENT PRIMARY KEY,         
+first_name VARCHAR(50) NOT NULL,         
+last_name VARCHAR(50) NOT NULL,           
+email_address VARCHAR(50) NOT NULL,        
+password VARCHAR(50) NOT NULL,            
+joined_date DATE NOT NULL,              
+date_host_started DATE NOT NULL           
 );
