@@ -1,0 +1,11 @@
+Problem Statement:
+The database needs a way to associate properties with multiple categories in a many-to-many relationship. This is necessary to allow a property to be classified under various labels, such as 'beachfront', 'pet-friendly', and 'has a pool'.
+
+Implemented Solution:
+A join table named `property_category` was created to link the `property` and `category` tables. This table has two columns, `property_id` and `category_id`, which are foreign keys referencing the respective tables. A composite primary key on (`property_id`, `category_id`) ensures that each property-category pair is unique.
+
+Why it was necessary:
+Without a join table, it would be difficult to model a many-to-many relationship between properties and categories. This solution is scalable and follows database normalization principles.
+
+Expected Outcome:
+The `property_category` table will allow the application to efficiently query all categories for a given property or all properties belonging to a specific category. This will enable features like filtering properties by category.
