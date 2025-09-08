@@ -1,15 +1,34 @@
--- Active: 1753875628157@@127.0.0.1@3306@airbnb
 -- create airbnb database
 CREATE DATABASE airbnb;
 -- work with airbnb database
 USE airbnb;
 
--- Create country table
+CREATE TABLE category (
+    id INT AUTO_INCREMENT PRIMARY KEY, 
+    category_name VARCHAR(255) NOT NULL 
+);
+
+CREATE TABLE attribute_category (
+    id INT PRIMARY KEY, 
+    category_name VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE attribute (
+    id INT PRIMARY KEY,
+    category_id INT NOT NULL,
+    attribute_name VARCHAR(255) NOT NULL, 
+    description TEXT,
+    FOREIGN KEY (category_id) REFERENCES attribute_category(id)
+  );
+  
+CREATE TABLE region(
+id INT PRIMARY KEY AUTO_INCREMENT,  
+region_name  VARCHAR(20) NOT NULL     
+);
 
 CREATE TABLE country (
-    id INT PRIMARY KEY,      -- Unique identifier for each country
-    region_id INT,            -- Foreign Key linking to the 'region' table
-    country_name VARCHAR(255),      -- Name of the country
-    CONSTRAINT fk_region FOREIGN KEY (region_id)     -- Foreign Key constraint to ensure that the region_id refers to a valid region in the 'region' table
-    REFERENCES region(id)
+    id INT PRIMARY KEY,     
+    region_id INT,           
+    country_name VARCHAR(255),     
+    CONSTRAINT fk_region FOREIGN KEY (region_id) REFERENCES region(id)
 );
