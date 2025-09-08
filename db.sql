@@ -39,3 +39,8 @@ location_name VARCHAR(255) NOT NULL
 country_id INT,
 FOREIGN KEY (country_id) REFERENCES country(country_id)
 );
+
+CREATE TABLE property_type (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    type_name VARCHAR(255)
+);
