@@ -40,7 +40,15 @@ country_id INT,
 FOREIGN KEY (country_id) REFERENCES country(country_id)
 );
 
-CREATE TABLE property_type (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    type_name VARCHAR(255)
+CREATE TABLE place_type (
+    id INT PRIMARY KEY AUTO_INCREMENT, 
+    type_name VARCHAR(100)              
 );
+
+CREATE TABLE property_type (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    type_name VARCHAR(255)
+ )
+
+
+
