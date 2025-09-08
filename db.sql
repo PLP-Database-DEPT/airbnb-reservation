@@ -32,3 +32,10 @@ CREATE TABLE country (
     country_name VARCHAR(255),     
     CONSTRAINT fk_region FOREIGN KEY (region_id) REFERENCES region(id)
 );
+
+CREATE TABLE location(
+id INT PRIMARY KEY AUTO_INCREMENT,
+location_name VARCHAR(255) NOT NULL
+country_id INT,
+FOREIGN KEY (country_id) REFERENCES country(country_id)
+);
