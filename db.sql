@@ -20,5 +20,10 @@ CREATE TABLE attribute (
     attribute_name VARCHAR(255) NOT NULL, 
     description TEXT,
     FOREIGN KEY (category_id) REFERENCES attribute_category(id)
+  );
+  
+CREATE TABLE region(
+id INT PRIMARY KEY AUTO_INCREMENT,  
+region_name  VARCHAR(20) NOT NULL     
 );
 
