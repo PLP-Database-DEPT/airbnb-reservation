@@ -96,3 +96,14 @@ CREATE TABLE property_attribute(
     FOREIGN KEY (property_id) REFERENCES property(property_id)
     FOREIGN KEY (attribute_id) REFERENCES attribute(attribute_id)
 );
+
+CREATE TABLE user_review (
+    id INT PRIMARY KEY,
+    property_id INT NOT NULL,
+    user_id INT NOT NULL,
+    overall_rating INT NOT NULL,
+    comment TEXT,
+    review_date DATE,
+    FOREIGN KEY (property_id) REFERENCES property(id),
+    FOREIGN KEY (user_id) REFERENCES users(id)
+  );
