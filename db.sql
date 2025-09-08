@@ -116,3 +116,7 @@ CREATE TABLE component_rating(
     FOREIGN KEY (review_id) REFERENCES user_review(id)
 );
 
+CREATE TABLE booking_status(
+id INT PRIMARY KEY,
+status_name VARCHAR(100) 
+);
