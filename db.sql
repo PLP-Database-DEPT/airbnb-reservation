@@ -107,3 +107,12 @@ CREATE TABLE user_review (
     FOREIGN KEY (property_id) REFERENCES property(id),
     FOREIGN KEY (user_id) REFERENCES users(id)
   );
+  
+CREATE TABLE component_rating(
+    component_id INT,
+    review_id INT,
+    rating INT,
+    FOREIGN KEY (component_id) REFERENCES review_component(id),
+    FOREIGN KEY (review_id) REFERENCES user_review(id)
+);
+
