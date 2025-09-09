@@ -116,6 +116,11 @@ CREATE TABLE component_rating(
     FOREIGN KEY (review_id) REFERENCES user_review(id)
 );
 
+CREATE TABLE review_component (	
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	component_name VARCHAR(100)
+);
+
 CREATE TABLE booking_status(
 id INT PRIMARY KEY,
 status_name VARCHAR(100) 
@@ -149,3 +154,4 @@ CREATE TABLE language (
     id INT PRIMARY KEY,
     language_name VARCHAR(50)
 );
+
