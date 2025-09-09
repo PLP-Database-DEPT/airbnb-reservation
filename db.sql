@@ -2,7 +2,6 @@
 CREATE DATABASE airbnb;
 USE airbnb;
 
-<<<<<<< HEAD
 -- create property_category table to link properties and categories
 -- create property_category table to link properties and categories
 CREATE TABLE property_category (
@@ -11,8 +10,7 @@ CREATE TABLE property_category (
     FOREIGN KEY (property_id) REFERENCES property(property_id),
     FOREIGN KEY (category_id) REFERENCES category(category_id)
 );
-=======
->>>>>>> e2e4ffce32cbd58ee4d348af87b9f1228b4b5c72
+e2e4ffce32cbd58ee4d348af87b9f1228b4b5c72
 CREATE TABLE category (
     id INT AUTO_INCREMENT PRIMARY KEY, 
     category_name VARCHAR(255) NOT NULL 
@@ -191,11 +189,11 @@ CREATE TABLE booking_guests (
     FOREIGN KEY (booking_id) REFERENCES booking(id),
     FOREIGN KEY (guest_type_id) REFERENCES guest_type(id)
 );
-<<<<<<< HEAD
+HEAD
 =======
 
 CREATE TABLE language (
     id INT PRIMARY KEY,
     language_name VARCHAR(50)
 );
->>>>>>> e2e4ffce32cbd58ee4d348af87b9f1228b4b5c72
+e2e4ffce32cbd58ee4d348af87b9f1228b4b5c72
