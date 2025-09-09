@@ -81,7 +81,12 @@ CREATE TABLE property (
     CONSTRAINT fk_property_property_type FOREIGN KEY (property_type_id) REFERENCES property_type(id),
     CONSTRAINT fk_property_host FOREIGN KEY (host_id) REFERENCES host(id)
 );
-
+CREATE TABLE property_category (
+    property_id INT,
+    category_id INT,
+    FOREIGN KEY (property_id) REFERENCES property(property_id),
+    FOREIGN KEY (category_id) REFERENCES category(category_id)
+);
 CREATE TABLE favourite (
     property_id INT NOT NULL,
     user_id INT NOT NULL,
@@ -154,4 +159,3 @@ CREATE TABLE language (
     id INT PRIMARY KEY,
     language_name VARCHAR(50)
 );
-
