@@ -1,3 +1,5 @@
+![example workflow](https://github.com/PLP-Database-DEPT/airbnb-reservation/actions/workflows/ci.yml/badge.svg)
+
 ### Airbnb-reservation System
 airbnb-reservation System is an open-source educational project designed to teach learners how to manage and structure databases using a realistic and practical use case: a vacation rental and booking platform, inspired by Airbnb
 
