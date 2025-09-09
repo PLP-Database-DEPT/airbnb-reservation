@@ -90,36 +90,12 @@ CREATE TABLE property_category (
 CREATE TABLE favourite (
     property_id INT NOT NULL,
     user_id INT NOT NULL,
-    CONSTRAINT pk_favourite PRIMARY KEY (property_id, user_id),
-    CONSTRAINT fk_favourite_property FOREIGN KEY (property_id) REFERENCES property(property_id),
-    CONSTRAINT fk_favourite_user FOREIGN KEY (user_id) REFERENCES user_account(user_id)
-  );
-
-CREATE TABLE property_attribute(
-    property_id INT,
-    attribute_id INT,
-    FOREIGN KEY (property_id) REFERENCES property(property_id)
-    FOREIGN KEY (attribute_id) REFERENCES attribute(attribute_id)
+    language_id INT NOT NULL,
+    PRIMARY KEY (user_id, language_id),
+    FOREIGN KEY (user_id) REFERENCES user_account(user_id),
+    FOREIGN KEY (language_id) REFERENCES language(language_id)
 );
 
-CREATE TABLE user_review (
-    id INT PRIMARY KEY,
-    property_id INT NOT NULL,
-    user_id INT NOT NULL,
-    overall_rating INT NOT NULL,
-    comment TEXT,
-    review_date DATE,
-    FOREIGN KEY (property_id) REFERENCES property(id),
-    FOREIGN KEY (user_id) REFERENCES users(id)
-  );
-  
-CREATE TABLE component_rating(
-    component_id INT,
-    review_id INT,
-    rating INT,
-    FOREIGN KEY (component_id) REFERENCES review_component(id),
-    FOREIGN KEY (review_id) REFERENCES user_review(id)
-);
 
 CREATE TABLE review_component (	
 	id INT PRIMARY KEY AUTO_INCREMENT,
@@ -159,3 +135,10 @@ CREATE TABLE language (
     id INT PRIMARY KEY,
     language_name VARCHAR(50)
 );
+
+CREATE TABLE user_language (
+  user_id INT,
+  language_id INT,
+  FOREIGN KEY (user_id) REFERENCES user_account(id),
+  FOREIGN KEY (language_id) REFERENCES language(id)
+  );
