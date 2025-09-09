@@ -1,4 +1,4 @@
--- create airbnb database
+-- Create Airbnb database
 CREATE DATABASE airbnb;
 USE airbnb;
 
@@ -8,12 +8,12 @@ CREATE TABLE category (
 );
 
 CREATE TABLE attribute_category (
-    id INT AUTO_INCREMENT PRIMARY KEY, 
+    id INT PRIMARY KEY, 
     category_name VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE attribute (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id INT PRIMARY KEY,
     category_id INT NOT NULL,
     attribute_name VARCHAR(255) NOT NULL, 
     description TEXT,
@@ -26,7 +26,7 @@ CREATE TABLE region(
 );
 
 CREATE TABLE country (
-    id INT AUTO_INCREMENT PRIMARY KEY,     
+    id INT PRIMARY KEY,     
     region_id INT,           
     country_name VARCHAR(255),     
     FOREIGN KEY (region_id) REFERENCES region(id)
@@ -88,9 +88,24 @@ CREATE TABLE property_category (
     FOREIGN KEY (category_id) REFERENCES category(id)
 );
 
+CREATE TABLE property_attribute (
+    property_id INT NOT NULL,
+    attribute_id INT NOT NULL,
+    PRIMARY KEY (property_id, attribute_id),
+    FOREIGN KEY (property_id) REFERENCES property(id),
+    FOREIGN KEY (attribute_id) REFERENCES attribute(id)
+);
+
 CREATE TABLE language (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id INT PRIMARY KEY,
     language_name VARCHAR(50)
+);
+
+CREATE TABLE user_language (
+    user_id INT,
+    language_id INT,
+    FOREIGN KEY (user_id) REFERENCES user_account(id),
+    FOREIGN KEY (language_id) REFERENCES language(id)
 );
 
 CREATE TABLE favourite (
@@ -108,13 +123,32 @@ CREATE TABLE review_component (
     component_name VARCHAR(100)
 );
 
-CREATE TABLE booking_status(
+CREATE TABLE user_review (
     id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    property_id INT NOT NULL,
+    review_text TEXT,
+    review_date DATE NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES user_account(id),
+    FOREIGN KEY (property_id) REFERENCES property(id)
+);
+
+CREATE TABLE component_rating (
+    review_id INT NOT NULL,
+    component_id INT NOT NULL,
+    rating INT CHECK (rating BETWEEN 1 AND 5),
+    PRIMARY KEY (review_id, component_id),
+    FOREIGN KEY (review_id) REFERENCES user_review(id),
+    FOREIGN KEY (component_id) REFERENCES review_component(id)
+);
+
+CREATE TABLE booking_status(
+    id INT PRIMARY KEY,
     status_name VARCHAR(100) 
 );
 
 CREATE TABLE booking (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id INT PRIMARY KEY,
     property_id INT NOT NULL,
     user_id INT NOT NULL,
     booking_status_id INT NOT NULL,
@@ -130,7 +164,7 @@ CREATE TABLE booking (
 );
 
 CREATE TABLE guest_type (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id INT PRIMARY KEY,
     type_name VARCHAR(50)
 );
 
@@ -140,11 +174,4 @@ CREATE TABLE booking_guests (
     num_guests INT,
     FOREIGN KEY (booking_id) REFERENCES booking(id),
     FOREIGN KEY (guest_type_id) REFERENCES guest_type(id)
-);
-
-CREATE TABLE user_language (
-    user_id INT,
-    language_id INT,
-    FOREIGN KEY (user_id) REFERENCES user_account(id),
-    FOREIGN KEY (language_id) REFERENCES language(id)
 );
